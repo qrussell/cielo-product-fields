@@ -60,12 +60,19 @@ class Cielo_Product_Fields {
 // Initialize the core plugin
 new Cielo_Product_Fields();
 
-// Load all of our integration bridges
-require_once plugin_dir_path( __FILE__ ) . 'includes/admin-meta-box.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-frontend-render.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-cart-handler.php';
+// Define the base path for all includes
+$includes_dir = plugin_dir_path( __FILE__ ) . 'includes/';
 
-// Only load license manager if it exists (allows you to use universal server logic)
-if ( file_exists( plugin_dir_path( __FILE__ ) . 'includes/class-license-manager.php' ) ) {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-license-manager.php';
+// Safely require files using absolute server paths
+if ( file_exists( $includes_dir . 'admin-meta-box.php' ) ) {
+    require_once $includes_dir . 'admin-meta-box.php';
+}
+if ( file_exists( $includes_dir . 'class-frontend-render.php' ) ) {
+    require_once $includes_dir . 'class-frontend-render.php';
+}
+if ( file_exists( $includes_dir . 'class-cart-handler.php' ) ) {
+    require_once $includes_dir . 'class-cart-handler.php';
+}
+if ( file_exists( $includes_dir . 'class-license-manager.php' ) ) {
+    require_once $includes_dir . 'class-license-manager.php';
 }
