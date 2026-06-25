@@ -1,0 +1,16 @@
+{
+  "name": "cielo-product-fields",
+  "version": "1.0.0",
+  "description": "React build pipeline for Cielo Custom Product Fields",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "dependencies": {
+    "lucide-react": "^0.292.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^26.15.0"
+  }
+}

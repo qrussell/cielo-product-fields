@@ -1,0 +1,100 @@
+/**
+ * Cielo Custom Product Fields - Frontend Styles
+ * Loaded natively on the WooCommerce single product page.
+ */
+
+/* Main Wrapper */
+.cielo-product-fields-wrapper {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #fdfdfd;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+/* Phase 6: Section Headers */
+.cielo-section-title {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Individual Field Wrappers */
+.cielo-field-wrapper {
+    margin-bottom: 15px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.cielo-field-wrapper label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #334155;
+}
+
+/* Inputs, Selects, and Textareas */
+.cielo-input[type="text"],
+.cielo-input[type="number"],
+.cielo-input[type="file"],
+select.cielo-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cielo-input[type="text"]:focus,
+.cielo-input[type="number"]:focus,
+select.cielo-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Radio Buttons */
+.cielo-field-wrapper input[type="radio"] {
+    margin-right: 6px;
+    accent-color: #3b82f6;
+}
+
+/* Phase 4: Live Price Preview Box */
+#cielo-live-price-preview {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 6px;
+    color: #0f172a;
+    transition: opacity 0.3s ease;
+}
+
+#cielo-per-order-notice {
+    font-size: 0.85em;
+    color: #64748b;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+/* Phase 6: Image Modal & Hover Effects */
+.cielo-file-preview img {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cielo-file-preview img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+#cielo-modal-close:hover {
+    color: #ef4444; /* Turns red on hover to indicate close */
+}

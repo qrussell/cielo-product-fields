@@ -1,0 +1,19 @@
+# Node Modules (Never commit these!)
+node_modules/
+
+# Build Script Output
+# Ignores any ZIP files created by our build.ps1 script
+*.zip
+
+# Operating System Junk Files
+.DS_Store
+Thumbs.db
+
+# Editor Directories and Files
+.idea
+.vscode/
+*.swp
+*.swo
+
+# Environment Variables (Security)
+.env
