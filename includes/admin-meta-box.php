@@ -70,12 +70,34 @@ if ( ! class_exists( 'Cielo_Admin_Meta_Box' ) ) {
 		public function enqueue_react_app( $hook ) {
 			global $post;
 			if ( ( $hook === 'post-new.php' || $hook === 'post.php' ) && isset($post) && 'cielo_product_fields' === $post->post_type ) {
-				// Fixed paths: Step out of includes/ into build/
-				wp_enqueue_script( 'cielo-react-builder', plugins_url( '../build/index.js', __FILE__ ), array( 'wp-element' ), '2.0.0', true );
 				
-				// NOTE: Change style-index.css to index.css here if your build folder names it that way!
-				wp_enqueue_style( 'cielo-react-styles', plugins_url( '../build/style-index.css', __FILE__ ), array(), '2.0.0' );
+				// 1. Read the auto-generated dependencies from your build folder
+				$asset_file_path = plugin_dir_path( __DIR__ ) . 'build/index.asset.php';
+				if ( file_exists( $asset_file_path ) ) {
+					$assets = include $asset_file_path;
+				} else {
+					// Fallback just in case
+					$assets = array( 'dependencies' => array( 'wp-element' ), 'version' => time() );
+				}
+
+				// 2. Enqueue the React JS using the correct dependencies and version hash
+				wp_enqueue_script( 
+					'cielo-react-builder', 
+					plugins_url( '../build/index.js', __FILE__ ), 
+					$assets['dependencies'], 
+					$assets['version'], 
+					true 
+				);
 				
+				// 3. Enqueue the CSS (Fixed path to index.css)
+				wp_enqueue_style( 
+					'cielo-react-styles', 
+					plugins_url( '../build/index.css', __FILE__ ), 
+					array(), 
+					$assets['version'] 
+				);
+				
+				// 4. Pass existing database data into React
 				$existing_data = get_post_meta( $post->ID, '_cielo_template_data', true );
 				wp_localize_script( 'cielo-react-builder', 'cieloTemplateData', array( 'fields' => $existing_data ) );
 			}
