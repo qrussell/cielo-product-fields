@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-// ADD THIS WRAPPER TO PREVENT FATAL ERRORS
 if ( ! class_exists( 'Cielo_Product_Fields' ) ) {
 
 	class Cielo_Product_Fields {
@@ -42,7 +41,6 @@ if ( ! class_exists( 'Cielo_Product_Fields' ) ) {
 					'singular_name' => 'Product Field Group',
 					'add_new_item'  => 'Add New Field Group',
 				),
-				// FIX: Removed 'custom-fields' to hide the native WP text box
 				'supports'              => array( 'title' ), 
 				'public'                => false,
 				'show_ui'               => true,
@@ -60,10 +58,9 @@ if ( ! class_exists( 'Cielo_Product_Fields' ) ) {
 		}
 	}
 
-	// Initialize the core plugin (inside the wrapper)
+	// Initialize the core plugin
 	new Cielo_Product_Fields();
-
-} // END OF WRAPPER
+}
 
 // Define the base path for all includes
 $includes_dir = plugin_dir_path( __FILE__ ) . 'includes/';
